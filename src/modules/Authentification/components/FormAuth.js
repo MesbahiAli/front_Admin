@@ -121,6 +121,14 @@
                 openSnackBar: true,
               });
               localStorage.setItem("token", response.authorization_token);
+              localStorage.setItem("firebase_imgurl", response.firebase_imgurl);
+              localStorage.setItem("holder_displayname", response.holder_displayname);
+              localStorage.setItem("Id", response.holder_id);
+              localStorage.setItem("holder_mail", response.holder_mail);
+              localStorage.setItem("holder_profile", response.holder_profile);
+              localStorage.setItem("response_code", response.response_code);
+              localStorage.setItem("response_message", response.response_message);
+
               window.location.href = "/homeafterlogin";
             },
             failCallBack: (error) => {

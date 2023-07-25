@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import FormAuth from '../../modules/Authentification/components/FormAuth';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import JwtUtils from "../../routing/JwtUtils";
+import { useSelector } from "react-redux";
+
 
 
 const Navbar = () => {
@@ -35,7 +37,7 @@ const Navbar = () => {
   const handleLogout = () => {
     JwtUtils.logOut(); // Logout by clearing localStorage
   };
-  console.log(JwtUtils.isActif())
+
   return (
     <>
       <AppBar position="sticky">

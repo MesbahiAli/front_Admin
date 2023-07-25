@@ -17,7 +17,7 @@ const authStart = (state, action) => {
 
 const authSuccess = (state, action) => {
   return updateObject(state, {
-    token: action.authorization_token,
+    token: action.response.authorization_token,
     isLoading: false,
     error: null,
   });
