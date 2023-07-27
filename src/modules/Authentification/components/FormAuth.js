@@ -19,7 +19,6 @@
   import GoogleLogo from "../../../assets/images/icons8-google-48.png";
   import EmailLogo from "../../../assets/images/icons8-email-30.png";
   import { auth, provider } from "./FirebaseConfi";
-  import { useHistory} from "react-router-dom";
   import AccountCircleIcon from '@mui/icons-material/AccountCircle';
   import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
@@ -79,7 +78,6 @@
       width: "100%",
     };
 
-    const history = useHistory();
     const formik = useFormik({
       initialValues: {
         email: "",

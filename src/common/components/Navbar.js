@@ -1,25 +1,14 @@
 // Navbar.js
 import React, { useState } from 'react';
-import { styled, AppBar, Box, Modal, Typography, Toolbar, IconButton, Menu, MenuItem } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { styled, AppBar, Box, Modal, Typography, Toolbar, IconButton} from '@mui/material';
 import FormAuth from '../../modules/Authentification/components/FormAuth';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import JwtUtils from "../../routing/JwtUtils";
-import { useSelector } from "react-redux";
 
 
 
 const Navbar = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handleOpen = () => {
     setOpen(true);

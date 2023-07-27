@@ -61,4 +61,5 @@ class JwtUtils {
   }
 }
 
-  export default new JwtUtils();
+const jwtUtilsInstance = new JwtUtils();
+  export default jwtUtilsInstance;
