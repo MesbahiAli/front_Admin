@@ -55,7 +55,7 @@ class JwtUtils {
 
   logOut() {
     if (localStorage.token) {
-      localStorage.removeItem("token");
+      localStorage.clear();
       window.location.reload();
     }
   }

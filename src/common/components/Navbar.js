@@ -4,6 +4,8 @@ import { styled, AppBar, Box, Modal, Typography, Toolbar, IconButton} from '@mui
 import FormAuth from '../../modules/Authentification/components/FormAuth';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import JwtUtils from "../../routing/JwtUtils";
+import Avatar from '@mui/material/Avatar';
+
 
 
 
@@ -54,7 +56,7 @@ const Navbar = () => {
                     "&:hover": { backgroundColor: "#9EC1F4", color: "#003285" },
                   }}
                 >
-                  <AccountCircleIcon />
+                  <Avatar src={localStorage?.firebase_imgurl} sx={{ width: 35, height: 35 }}/>
                   <Typography
                     sx={{
                       fontFamily:
@@ -83,7 +85,7 @@ const Navbar = () => {
                     "&:hover": { backgroundColor: "#9EC1F4", color: "#003285" },
                   }}
                 >
-                  <AccountCircleIcon />
+                  <AccountCircleIcon sx={{ width: 24, height: 24 }}/>
                   <Typography
                     sx={{
                       fontFamily:
