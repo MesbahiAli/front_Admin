@@ -126,7 +126,6 @@
               localStorage.setItem("holder_profile", response.holder_profile);
               localStorage.setItem("response_code", response.response_code);
               localStorage.setItem("response_message", response.response_message);
-
               window.location.href = "/homeafterlogin";
             },
             failCallBack: (error) => {
@@ -347,6 +346,7 @@
                     <Box className="inputStyle">
                       <Box
                         sx={{
+                          display:"flex",
                           "& .MuiTextField-root": {
                             m: 1,
                             width: "30ch",
@@ -407,6 +407,7 @@
                     <Box className="inputStyle">
                       <Box
                         sx={{
+                          display:"flex",
                           "& .MuiTextField-root": {
                             m: 1,
                             width: "30ch",
@@ -441,6 +442,7 @@
                     <Box className="inputStyle">
                       <Box
                         sx={{
+                          display:"flex",
                           "& .MuiTextField-root": {
                             m: 1,
                             width: "30ch",

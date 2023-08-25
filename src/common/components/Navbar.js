@@ -1,20 +1,30 @@
 // Navbar.js
 import React, { useState } from 'react';
-import { styled, AppBar, Box, Modal, Typography, Toolbar, IconButton} from '@mui/material';
+import { Button,styled, AppBar, Box, Modal, Typography, Toolbar, IconButton, Menu, MenuItem } from '@mui/material';
+import { Link } from 'react-router-dom';
 import FormAuth from '../../modules/Authentification/components/FormAuth';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import JwtUtils from "../../routing/JwtUtils";
-import Avatar from '@mui/material/Avatar';
-
+import DehazeIcon from '@mui/icons-material/Dehaze';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import MenuIcon from '@mui/icons-material/Menu';
+import LOGO from "../../assets/images/LogoAPP.png";
 
 
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
+  const [isOpen, setIsOpen] = useState(false); // state variable to track whether some element is open
+  const handleClick = () => {
+    // Define functions to handle different events
+    setIsOpen(!isOpen); // set the state to the opposite of its current value
   };
+  const [anchorElNav, setAnchorElNav] = useState(null); // state variable to keep track of clicked Nav anchor element
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const pages = ['Products', 'Pricing', 'Blog'];
 
   const handleCloseModal = () => {
     setOpen(false);
@@ -23,21 +33,157 @@ const Navbar = () => {
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "center",
   });
   
   const handleLogout = () => {
     JwtUtils.logOut(); // Logout by clearing localStorage
   };
 
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
   return (
     <>
-      <AppBar position="sticky">
+      <AppBar position="sticky" style={{backgroundColor: "#FFFFFF",color:"#14181F",}}>
         <StyledToolbar>
-          <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
-            LAMA DEV
+        <Box sx={{ display: { xs: 'flex', md: 'none' } ,width:"30%",}}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <img
+                      src={LOGO}
+                      className="logo"
+                      alt="logo"
+                      width="50px"
+                    />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+                fontFamily:"Segoe UI"
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} 
+                onClick={handleCloseNavMenu}
+                >
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+
+
+
+
+
+ <Box sx={{display: { xs: 'none', md: 'flex' },width:"30%",justifyContent:"space-around"}}>
+
+ <Box sx={{display:"flex"}}>
+ <img
+                      src={LOGO}
+                      className="logo"
+                      alt="logo"
+                      width="50px"
+                    />
+</Box>
+   <Box sx={{display:"flex"}}>
+            {pages.map((page) => (
+              <Button
+               key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ mr: 2,color: 'black', display: 'block' ,
+                mr: 2,
+                    color: 'black',
+                    display: 'block',
+                    textDecoration: 'none',
+                    borderBottom: '2px solid transparent',
+                    transition: 'border-bottom 0.3s ease',
+                    '&:hover, &:active': {
+                      borderBottom: '2px solid #C9A16E',
+                      borderRadius: '0px',
+                    },}}
+              >
+                {page}
+              </Button>
+            ))}
+            </Box>
+          </Box>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <Box 
+          style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+          >
+            <Typography  style={{fontSize:"18px",fontWeight:"bold"}}>La recharge en toute liberté !
           </Typography>
-          
-          {JwtUtils.isActif() ? (
+          </Box>
+
+          <Box style={{display: "flex",
+    alignItems:"center",
+    width:"30%",
+    justifyContent:"flex-end"
+    }}>
+          <Box sx={{display: { xs: 'none', md: 'flex' }}}>
+            {JwtUtils.isActif() ? (
                 <IconButton
                   size="small"
                   aria-label="account user"
@@ -52,20 +198,25 @@ const Navbar = () => {
                     marginRight: "5px",
                     cursor: "pointer",
                     fontFamily:
-                      "Times New Roman ,Circular Pro,-Apple-System, .SFNSText-Regular,San Francisco,Segoe UI",
+                    "Segoe UI,Times New Roman ,Circular Pro,-Apple-System, .SFNSText-Regular,San Francisco,Segoe UI",
                     "&:hover": { backgroundColor: "#9EC1F4", color: "#003285" },
                   }}
                 >
-                  <Avatar src={localStorage?.firebase_imgurl} sx={{ width: 35, height: 35 }}/>
                   <Typography
                     sx={{
                       fontFamily:
-                        "Times New Roman ,Circular Pro,-Apple-System, .SFNSText-Regular,San Francisco,Segoe UI",
-                      marginLeft: "7px",
+                      "Segoe UI,Times New Roman ,Circular Pro,-Apple-System, .SFNSText-Regular,San Francisco,Segoe UI",
+                      marginRight: "7px",
                     }}
                   >
                     Deconnecter {}
                   </Typography>
+                  <img  
+                      src={localStorage?.firebase_imgurl}
+                      className="logo"
+                      alt="logo"
+                      width="50px"
+                    />
                 </IconButton>
               ) : (
                 <IconButton
@@ -85,18 +236,23 @@ const Navbar = () => {
                     "&:hover": { backgroundColor: "#9EC1F4", color: "#003285" },
                   }}
                 >
-                  <AccountCircleIcon sx={{ width: 24, height: 24 }}/>
                   <Typography
                     sx={{
                       fontFamily:
-                        "Times New Roman ,Circular Pro,-Apple-System, .SFNSText-Regular,San Francisco,Segoe UI",
-                      marginLeft: "4px",
+                      "Times New Roman ,Circular Pro,-Apple-System, .SFNSText-Regular,San Francisco,Segoe UI",
+                      marginRight: "4px",
                     }}
                   >
                     Se connecter {}
                   </Typography>
+                    <PersonOutlineIcon />
                 </IconButton>
               )}
+              </Box>
+<Box style={{display:"flex"}}>
+<DehazeIcon/>
+              </Box>
+              </Box> 
         </StyledToolbar>
       </AppBar>
 
