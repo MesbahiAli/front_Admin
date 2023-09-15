@@ -11,12 +11,11 @@ import { useSelector } from "react-redux";
 import * as roles from "./routing/roles";
 import HomeBeforeLogin from './common/components/HomeBeforeLogin';
 import HomeAfterLogin from './common/components/HomeAfterLogin';
-
-
+import Budget from "./modules/Dashboard/Components/Budget";
 
 
 const protectedRoutes = {
-  homeAfterLogin: { path: "/homeafterlogin", requiredRoles: [], component: HomeAfterLogin },
+  Budget: { path: "/homeafterlogin", requiredRoles: [], component: Budget },
 };
 
 let isAuthenticated = localStorage.getItem("token"); // state managed with authentication module
@@ -48,7 +47,7 @@ function App() {
   // Routes for authenticated users
   let content = (
     <Switch>
-      <Route exact path="/homeafterlogin" component={HomeAfterLogin} />
+      <Route exact path="/homeafterlogin" component={Budget} />
       {protectedRoutes && Object.entries(protectedRoutes).map(([routeKey, routeProps]) => (
         <ProtectedRoute
           key={routeKey}

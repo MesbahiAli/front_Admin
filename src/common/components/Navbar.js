@@ -117,9 +117,6 @@ const Navbar = () => {
                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ mr: 2,color: 'black', display: 'block' ,
-                mr: 2,
-                    color: 'black',
-                    display: 'block',
                     textDecoration: 'none',
                     borderBottom: '2px solid transparent',
                     transition: 'border-bottom 0.3s ease',

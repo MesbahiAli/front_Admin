@@ -2,7 +2,8 @@
   import config from "./Config";
 
   const instance = axios.create({
-    baseURL: config.url
+    baseURL: config.url,
+    
   });
 
   instance.interceptors.request.use(config => {

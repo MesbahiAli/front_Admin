@@ -1,6 +1,7 @@
 import React from 'react';
 import { DataGrid ,GridToolbarQuickFilter} from '@mui/x-data-grid';
-import { Box, Grid } from '@mui/material'; // Import Box and Grid components
+import { Box, Grid ,Typography} from '@mui/material'; // Import Box and Grid components
+import { useStyles } from "./Style";
 
 function QuickSearchToolbar() {
   return (
@@ -16,28 +17,39 @@ function QuickSearchToolbar() {
 }
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
+  { field: 'label', headerName: 'label', width: 130 },
   { field: 'lastName', headerName: 'Last name', width: 130 },
   {
-    field: 'age',
-    headerName: 'Age',
+    field: 'Solde',
+    headerName: 'Solde',
     type: 'number',
     width: 90,
   },
   {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
+    field: 'Entreprise',
+    headerName: 'Entreprise',
     width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
   },
+  {
+    field: "date d'activation",
+    headerName: "date d'activation",
+    width: 160,
+  },
+  {
+    field: "Status",
+    headerName: 'Status',
+    width: 160,
+  },
+  {
+    field: "Action",
+    headerName: 'Action',
+    width: 160,
+  },
+
 ];
 
 const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 1, lastName: 'Snow', label: 'Jon', age: 35 },
   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
   { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
@@ -49,17 +61,23 @@ const rows = [
 ];
 
 const HomeBeforeLogin = () => {
+
+  const classes = useStyles();
+
   return (
-    <Box>
-      <Grid container direction="column">
+   <Box>
+      <Grid container direction="column" className={classes.map} >
         <Grid item container>
           <Grid item xs={0} sm={1} />
           <Grid item xs={12} sm={10}>
-            <div style={{ height: 500, width: '100%', marginTop: '37px' }}>
+            <Typography variant="h4" align="center" gutterBottom>
+              Administration
+            </Typography>
+            <div style={{ height: 400, width: '100%', marginTop: '37px' }}>
               <DataGrid
+                className={classes.DataGrid}
                 rows={rows}
                 columns={columns}
-                pageSizeOptions={[5, 10]}
                 components={{ Toolbar: QuickSearchToolbar }}
               />
             </div>
@@ -67,7 +85,7 @@ const HomeBeforeLogin = () => {
           <Grid item xs={0} sm={1} />
         </Grid>
       </Grid>
-    </Box>
+  </Box>
   );
 };
 

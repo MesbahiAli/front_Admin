@@ -13,7 +13,7 @@ const config = {
 
   // config for local backend
 
-  url: "http://192.168.1.102:3001",
+  url: "http://localhost:3001",
   WebSocketUrl: "ws://127.0.0.1:4001",
   appVersion: "1.0.0",
   primaryColor: "#232A56",
