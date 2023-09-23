@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const AuthApi = (payload) => {
-  return axios.post("http://localhost:3001/auth/user/connect", payload, {
+  return axios.post("http://localhost:8080/auth/user/connect", payload, {
     headers: {
       'Content-Type': 'application/json',
     },
